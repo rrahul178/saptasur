@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #eceff1;
+  --surface: #ffffff;
+  --ink: #1a1a2e;
+  --muted: #5c6070;
+  --line: #cfd4da;
+  --accent: #e0a21b;
+  --cover: #1a1a2e;
+  --cover-ink: #edebf5;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121224;
+    --surface: #1b1b33;
+    --ink: #edebf5;
+    --muted: #a4a6ba;
+    --line: #34344f;
+    --accent: #f2b33d;
+    --cover: #2a2a4a;
+    --cover-ink: #edebf5;
+  }
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Hind Siliguri", system-ui, sans-serif;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: "Noto Serif Bengali", serif; line-height: 1.35; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+::selection { background: var(--accent); color: #1a1a2e; }
+
+.prose-body p { margin-bottom: 1.25rem; max-width: 62ch; font-size: 1.125rem; }
+
+/* One orchestrated moment: the seven strings rise once on load */
+@keyframes rise { from { transform: scaleY(0.15); } to { transform: scaleY(1); } }
+.swara { transform-origin: bottom; animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .swara { animation: none; }
+  html { scroll-behavior: auto; }
+}
